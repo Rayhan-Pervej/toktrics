@@ -1,0 +1,265 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-canvas: #fbfbfd;
+  --color-panel: #ffffff;
+  --color-raised: #f5f6f8;
+  --color-line: #e4e6ec;
+  --color-line-soft: #eff0f4;
+  --color-ink: #16181d;
+  --color-dim: #4b5263;
+  --color-faint: #575e6c;
+  --color-brand: #4f46e5;
+  --color-brand-soft: #eef0ff;
+  --color-brand-line: #c9cdf7;
+  --color-up: #b42318;
+  --color-down: #067647;
+  --color-down-soft: #ecfdf3;
+
+  --font-sans: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
+  --shadow-lift: 0 4px 12px rgba(16, 24, 40, 0.07), 0 2px 4px rgba(16, 24, 40, 0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-canvas: #0b0c0f;
+    --color-panel: #14161b;
+    --color-raised: #1c1f26;
+    --color-line: #313742;
+    --color-line-soft: #23272f;
+    --color-ink: #eceef2;
+    --color-dim: #bcc3d0;
+    --color-faint: #9aa3b2;
+    --color-brand: #8b93ff;
+    --color-brand-soft: #1e2340;
+    --color-brand-line: #3f47a0;
+    --color-up: #f87171;
+    --color-down: #34d399;
+    --color-down-soft: #0f2a21;
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-lift: 0 8px 28px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+}
+
+:root[data-theme='dark'] {
+  --color-canvas: #0b0c0f;
+  --color-panel: #14161b;
+  --color-raised: #1c1f26;
+  --color-line: #313742;
+  --color-line-soft: #23272f;
+  --color-ink: #eceef2;
+  --color-dim: #bcc3d0;
+  --color-faint: #9aa3b2;
+  --color-brand: #8b93ff;
+  --color-brand-soft: #1e2340;
+  --color-brand-line: #3f47a0;
+  --color-up: #f87171;
+  --color-down: #34d399;
+  --color-down-soft: #0f2a21;
+}
+
+html {
+  background: var(--color-canvas);
+}
+
+button:not(:disabled),
+[role='button']:not(:disabled),
+label[for] {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.011em;
+}
+
+/* A faint wash behind the top of the page, so the hero lifts off the canvas. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 420px;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(70% 100% at 50% 0%, color-mix(in oklab, var(--color-brand) 12%, transparent), transparent 70%);
+  opacity: 0.55;
+}
+
+main,
+header {
+  position: relative;
+  z-index: 1;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--color-dim);
+}
+
+/* One selection treatment for every pickable row, so they stay in step. */
+.row-pick {
+  cursor: pointer;
+  transition:
+    background-color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.row-pick:hover:not(.is-selected) {
+  background-color: var(--color-raised);
+}
+
+/* The marker is drawn on the first cell: a row-level inset shadow is dropped
+   by border-collapse, which is what tables here use. */
+.row-pick.is-selected > *:first-child {
+  box-shadow: inset 2px 0 0 var(--color-brand);
+}
+
+.row-pick.is-selected,
+.row-pick.is-selected > * {
+  background-color: var(--color-brand-soft);
+}
+
+::selection {
+  background: var(--color-brand-line);
+  color: var(--color-ink);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Default scrollbars sit badly on the dark theme, so tables get a slim one. */
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+
+.scroll-x::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-x::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-x::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 999px;
+}
+
+.scroll-x::-webkit-scrollbar-thumb:hover {
+  background: var(--color-faint);
+}
+
+/* Native selects ignore most theming, so draw our own chevron and leave room for it. */
+.select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - 16px) calc(50% + 1px),
+    calc(100% - 11px) calc(50% + 1px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 34px;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  appearance: textfield;
+}
+
+/* The input keeps a full-height hit area; the visible track is drawn as a gradient. */
+input[type='range'] {
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-line);
+}
+
+input[type='range']::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-line);
+}
+
+input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -7px;
+  border-radius: 999px;
+  background: var(--color-panel);
+  border: 2px solid var(--color-brand);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+input[type='range']:hover::-webkit-slider-thumb,
+input[type='range']:active::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--color-panel);
+  border: 2px solid var(--color-brand);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    animation: none;
+  }
+}

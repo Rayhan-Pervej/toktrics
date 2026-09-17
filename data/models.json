@@ -1,0 +1,590 @@
+{
+  "ratesVerified": "2026-09-18",
+  "note": "Rates drift and public aggregators disagree with each other. Check the provider's own pricing page before relying on these figures.",
+  "models": [
+    {
+      "id": "gpt-6-astra",
+      "name": "GPT-6 Astra",
+      "provider": "OpenAI",
+      "inputRatePerM": 10,
+      "outputRatePerM": 50,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "frontier",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.0,
+        "readMultiplier": 0.1
+      },
+      "note": "Rates rise to $20/$75 above a 272K-token context."
+    },
+    {
+      "id": "claude-fable-5-1",
+      "name": "Claude Fable 5.1",
+      "provider": "Anthropic",
+      "inputRatePerM": 10,
+      "outputRatePerM": 50,
+      "image": {
+        "strategy": "gemini-tiles",
+        "tileSize": 750,
+        "tokensPerTile": 258
+      },
+      "tier": "frontier",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.25,
+        "readMultiplier": 0.025
+      },
+      "note": "Cache reads are 0.025x base input, not the usual 0.1x."
+    },
+    {
+      "id": "claude-opus-5",
+      "name": "Claude Opus 5",
+      "provider": "Anthropic",
+      "inputRatePerM": 5,
+      "outputRatePerM": 25,
+      "image": {
+        "strategy": "gemini-tiles",
+        "tileSize": 750,
+        "tokensPerTile": 258
+      },
+      "tier": "frontier",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.25,
+        "readMultiplier": 0.1
+      }
+    },
+    {
+      "id": "gpt-5-6-sol",
+      "name": "GPT-5.6 Sol",
+      "provider": "OpenAI",
+      "inputRatePerM": 4,
+      "outputRatePerM": 20,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "frontier",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.0,
+        "readMultiplier": 0.1
+      },
+      "note": "Leads FrontierMath reasoning."
+    },
+    {
+      "id": "kimi-k3",
+      "name": "Kimi K3",
+      "provider": "Moonshot AI",
+      "inputRatePerM": 3.39,
+      "outputRatePerM": 13.56,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "frontier",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "note": "Output rate estimated at 4x input."
+    },
+    {
+      "id": "gemini-3-1-pro",
+      "name": "Gemini 3.1 Pro",
+      "provider": "Google",
+      "inputRatePerM": 2,
+      "outputRatePerM": 12,
+      "image": {
+        "strategy": "gemini-tiles",
+        "tileSize": 768,
+        "tokensPerTile": 258
+      },
+      "tier": "frontier",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.25,
+        "readMultiplier": 0.1
+      },
+      "note": "Cheapest of the frontier tier. Rates quoted up to 200K context."
+    },
+    {
+      "id": "claude-sonnet-5",
+      "name": "Claude Sonnet 5",
+      "provider": "Anthropic",
+      "inputRatePerM": 2,
+      "outputRatePerM": 10,
+      "image": {
+        "strategy": "gemini-tiles",
+        "tileSize": 750,
+        "tokensPerTile": 258
+      },
+      "tier": "frontier",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.25,
+        "readMultiplier": 0.1
+      }
+    },
+    {
+      "id": "grok-4-6",
+      "name": "Grok 4.6",
+      "provider": "xAI",
+      "inputRatePerM": 2,
+      "outputRatePerM": 6,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "frontier",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "note": "Leads FrontierCode on difficult coding tasks."
+    },
+    {
+      "id": "qwen-3-8-max",
+      "name": "Qwen3.8 Max",
+      "provider": "Alibaba",
+      "inputRatePerM": 2,
+      "outputRatePerM": 6,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "frontier",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18"
+    },
+    {
+      "id": "glm-5-3",
+      "name": "GLM-5.3",
+      "provider": "Zhipu AI",
+      "inputRatePerM": 1.33,
+      "outputRatePerM": 5.32,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "frontier",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "note": "Output rate estimated at 4x input."
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "name": "Claude Sonnet 4.6",
+      "provider": "Anthropic",
+      "inputRatePerM": 3,
+      "outputRatePerM": 15,
+      "image": {
+        "strategy": "gemini-tiles",
+        "tileSize": 750,
+        "tokensPerTile": 258
+      },
+      "tier": "mid",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.25,
+        "readMultiplier": 0.1
+      },
+      "note": "Previous Sonnet generation."
+    },
+    {
+      "id": "gemini-3-8-flash",
+      "name": "Gemini 3.8 Flash",
+      "provider": "Google",
+      "inputRatePerM": 0.75,
+      "outputRatePerM": 3.75,
+      "image": {
+        "strategy": "gemini-tiles",
+        "tileSize": 768,
+        "tokensPerTile": 258
+      },
+      "tier": "mid",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.25,
+        "readMultiplier": 0.1
+      }
+    },
+    {
+      "id": "gemini-3-5-flash",
+      "name": "Gemini 3.5 Flash",
+      "provider": "Google",
+      "inputRatePerM": 1.5,
+      "outputRatePerM": 9,
+      "image": {
+        "strategy": "gemini-tiles",
+        "tileSize": 768,
+        "tokensPerTile": 258
+      },
+      "tier": "mid",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.25,
+        "readMultiplier": 0.1
+      }
+    },
+    {
+      "id": "claude-haiku-4-5",
+      "name": "Claude Haiku 4.5",
+      "provider": "Anthropic",
+      "inputRatePerM": 1,
+      "outputRatePerM": 5,
+      "image": {
+        "strategy": "gemini-tiles",
+        "tileSize": 750,
+        "tokensPerTile": 258
+      },
+      "tier": "mid",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.25,
+        "readMultiplier": 0.1
+      },
+      "note": "Cheapest first-party model from a US frontier lab."
+    },
+    {
+      "id": "mistral-large-3",
+      "name": "Mistral Large 3",
+      "provider": "Mistral",
+      "inputRatePerM": 0.5,
+      "outputRatePerM": 1.5,
+      "image": {
+        "strategy": "none"
+      },
+      "tier": "mid",
+      "batchDiscount": 0.5,
+      "vision": false,
+      "builtin": true,
+      "ratesVerified": "2026-09-18"
+    },
+    {
+      "id": "mistral-medium-3-5",
+      "name": "Mistral Medium 3.5",
+      "provider": "Mistral",
+      "inputRatePerM": 1.5,
+      "outputRatePerM": 7.5,
+      "image": {
+        "strategy": "none"
+      },
+      "tier": "mid",
+      "batchDiscount": 0.5,
+      "vision": false,
+      "builtin": true,
+      "ratesVerified": "2026-09-18"
+    },
+    {
+      "id": "llama-4-maverick",
+      "name": "Llama 4 Maverick",
+      "provider": "Meta",
+      "inputRatePerM": 0.188,
+      "outputRatePerM": 0.652,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "mid",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "note": "Open weights; price shown is a hosted rate."
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "provider": "DeepSeek",
+      "inputRatePerM": 0.435,
+      "outputRatePerM": 0.87,
+      "image": {
+        "strategy": "flat",
+        "flatTokens": 384
+      },
+      "tier": "mid",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.0,
+        "readMultiplier": 0.1
+      }
+    },
+    {
+      "id": "gpt-5-6-luna",
+      "name": "GPT-5.6 Luna",
+      "provider": "OpenAI",
+      "inputRatePerM": 0.2,
+      "outputRatePerM": 1.2,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "cheap",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.0,
+        "readMultiplier": 0.1
+      }
+    },
+    {
+      "id": "gpt-5-4-mini",
+      "name": "GPT-5.4 mini",
+      "provider": "OpenAI",
+      "inputRatePerM": 0.15,
+      "outputRatePerM": 0.6,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "cheap",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.0,
+        "readMultiplier": 0.1
+      }
+    },
+    {
+      "id": "gemini-3-1-flash-lite",
+      "name": "Gemini 3.1 Flash Lite",
+      "provider": "Google",
+      "inputRatePerM": 0.25,
+      "outputRatePerM": 1.5,
+      "image": {
+        "strategy": "gemini-tiles",
+        "tileSize": 768,
+        "tokensPerTile": 258
+      },
+      "tier": "cheap",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.25,
+        "readMultiplier": 0.1
+      },
+      "note": "Built for high-volume, latency-sensitive work."
+    },
+    {
+      "id": "gemini-3-5-flash-lite",
+      "name": "Gemini 3.5 Flash Lite",
+      "provider": "Google",
+      "inputRatePerM": 0.3,
+      "outputRatePerM": 2.5,
+      "image": {
+        "strategy": "gemini-tiles",
+        "tileSize": 768,
+        "tokensPerTile": 258
+      },
+      "tier": "cheap",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.25,
+        "readMultiplier": 0.1
+      }
+    },
+    {
+      "id": "deepseek-v4-1-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "provider": "DeepSeek",
+      "inputRatePerM": 0.15,
+      "outputRatePerM": 0.6,
+      "image": {
+        "strategy": "flat",
+        "flatTokens": 384
+      },
+      "tier": "cheap",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.0,
+        "readMultiplier": 0.1
+      },
+      "note": "Off-peak rates; peak pricing is higher."
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "name": "DeepSeek V4 Flash",
+      "provider": "DeepSeek",
+      "inputRatePerM": 0.14,
+      "outputRatePerM": 0.28,
+      "image": {
+        "strategy": "flat",
+        "flatTokens": 384
+      },
+      "tier": "cheap",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "cache": {
+        "writeMultiplier": 1.0,
+        "readMultiplier": 0.1
+      },
+      "note": "1M-token context. Cache hits drop input to $0.0028/M."
+    },
+    {
+      "id": "glm-5-3-flash",
+      "name": "GLM-5.3 Flash",
+      "provider": "Zhipu AI",
+      "inputRatePerM": 0.15,
+      "outputRatePerM": 0.5,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "cheap",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18"
+    },
+    {
+      "id": "qwen-3-7-flash",
+      "name": "Qwen3.7 Flash",
+      "provider": "Alibaba",
+      "inputRatePerM": 0.03,
+      "outputRatePerM": 0.13,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "cheap",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "note": "Among the cheapest paid APIs available."
+    },
+    {
+      "id": "llama-4-scout",
+      "name": "Llama 4 Scout",
+      "provider": "Meta",
+      "inputRatePerM": 0.11,
+      "outputRatePerM": 0.34,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "cheap",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "note": "Open weights; price shown is a hosted rate."
+    },
+    {
+      "id": "granite-4-micro",
+      "name": "Granite 4.0 Micro",
+      "provider": "IBM",
+      "inputRatePerM": 0.017,
+      "outputRatePerM": 0.068,
+      "image": {
+        "strategy": "none"
+      },
+      "tier": "cheap",
+      "batchDiscount": 0.5,
+      "vision": false,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "note": "Cheapest paid API listed. Output rate estimated at 4x input."
+    },
+    {
+      "id": "ministral-8b",
+      "name": "Ministral 8B",
+      "provider": "Mistral",
+      "inputRatePerM": 0.1,
+      "outputRatePerM": 0.1,
+      "image": {
+        "strategy": "none"
+      },
+      "tier": "cheap",
+      "batchDiscount": 0.5,
+      "vision": false,
+      "builtin": true,
+      "ratesVerified": "2026-09-18",
+      "note": "Small model for edge and high-volume work."
+    },
+    {
+      "id": "nova-lite",
+      "name": "Nova Lite",
+      "provider": "Amazon",
+      "inputRatePerM": 0.06,
+      "outputRatePerM": 0.24,
+      "image": {
+        "strategy": "openai-patches",
+        "patchSize": 32,
+        "maxTokens": 1536
+      },
+      "tier": "cheap",
+      "batchDiscount": 0.5,
+      "vision": true,
+      "builtin": true,
+      "ratesVerified": "2026-09-18"
+    }
+  ]
+}
