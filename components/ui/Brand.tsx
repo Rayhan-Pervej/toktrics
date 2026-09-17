@@ -9,14 +9,11 @@ export function Brand() {
   const search = searchParams.size > 0 ? `?${searchParams.toString()}` : ''
 
   return (
-    <div className="flex items-baseline gap-2.5">
-      <Link
-        href={`/${search}`}
-        className="text-[17px] font-semibold tracking-tight transition-opacity hover:opacity-80"
-      >
-        toktrics
-      </Link>
-      <span className="hidden text-[13px] text-faint sm:inline">LLM cost calculator</span>
-    </div>
+    <Link
+      href={`/${search}`}
+      className="text-[17px] font-semibold tracking-tight transition-opacity hover:opacity-80"
+    >
+      toktrics
+    </Link>
   )
 }
