@@ -1,5 +1,20 @@
 import type { Metadata } from 'next'
+import { Roboto, Roboto_Mono } from 'next/font/google'
 import { Suspense } from 'react'
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-roboto',
+  display: 'swap',
+})
+
+const robotoMono = Roboto_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-roboto-mono',
+  display: 'swap',
+})
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { Brand } from '@/components/ui/Brand'
 import { Footer } from '@/components/ui/Footer'
@@ -47,15 +62,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={`${roboto.variable} ${robotoMono.variable}`}>
       <body className="min-h-screen">
         <NuqsAdapter>
           <div className="border-b border-line bg-panel">
