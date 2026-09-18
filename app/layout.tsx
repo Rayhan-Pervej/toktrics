@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Roboto, Roboto_Mono } from 'next/font/google'
 import { Suspense } from 'react'
 
@@ -64,14 +65,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${roboto.variable} ${robotoMono.variable}`}>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('toktrics.v1.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}`,
-          }}
-        />
-      </head>
       <body className="min-h-screen">
+        {/* Applies the stored theme before paint, so there is no flash of the wrong one. */}
+        <Script id="theme" strategy="beforeInteractive">
+          {`try{var t=localStorage.getItem('toktrics.v1.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}`}
+        </Script>
         <NuqsAdapter>
           <div className="border-b border-line bg-panel">
             <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-5 py-3.5 sm:gap-6 sm:px-8">
