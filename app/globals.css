@@ -1,30 +1,30 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-canvas: #fbfbfd;
-  --color-panel: #ffffff;
-  --color-raised: #f5f6f8;
-  --color-line: #e4e6ec;
-  --color-line-soft: #eff0f4;
-  --color-ink: #16181d;
-  --color-dim: #4b5263;
-  --color-faint: #575e6c;
-  --color-brand: #4f46e5;
-  --color-brand-soft: #eef0ff;
-  --color-brand-line: #c9cdf7;
-  --color-up: #b42318;
-  --color-down: #067647;
-  --color-down-soft: #ecfdf3;
+  --color-canvas: #eae6df;
+  --color-panel: #f6f4f0;
+  --color-raised: #e2ddd4;
+  --color-line: #d2ccc1;
+  --color-line-soft: #ded8ce;
+  --color-ink: #1a1815;
+  --color-dim: #55514a;
+  --color-faint: #666158;
+  --color-brand: #4338ca;
+  --color-brand-soft: #e6e3fb;
+  --color-brand-line: #b8b2ee;
+  --color-up: #a81f16;
+  --color-down: #0a6b45;
+  --color-down-soft: #dff0e7;
 
   --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-roboto-mono), ui-monospace, 'Cascadia Code', monospace;
 
-  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
-  --shadow-lift: 0 4px 12px rgba(16, 24, 40, 0.07), 0 2px 4px rgba(16, 24, 40, 0.04);
+  --shadow-card: 0 1px 2px rgba(40, 32, 20, 0.05), 0 1px 3px rgba(40, 32, 20, 0.07);
+  --shadow-lift: 0 4px 14px rgba(40, 32, 20, 0.09), 0 2px 5px rgba(40, 32, 20, 0.06);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
+  :root[data-theme='auto'] {
     --color-canvas: #0b0c0f;
     --color-panel: #14161b;
     --color-raised: #1c1f26;
@@ -63,6 +63,12 @@
 
 html {
   background: var(--color-canvas);
+  color-scheme: light;
+}
+
+:root[data-theme='dark'],
+:root[data-theme='auto'] {
+  color-scheme: dark;
 }
 
 button:not(:disabled),
@@ -90,8 +96,8 @@ body::before {
   height: 420px;
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(70% 100% at 50% 0%, color-mix(in oklab, var(--color-brand) 12%, transparent), transparent 70%);
-  opacity: 0.55;
+  background: radial-gradient(70% 100% at 50% 0%, color-mix(in oklab, var(--color-brand) 7%, transparent), transparent 70%);
+  opacity: 0.5;
 }
 
 main,
