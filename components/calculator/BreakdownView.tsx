@@ -30,7 +30,7 @@ export function BreakdownView({ steps, modelName }: { steps: DerivationStep[]; m
           >
             <div className="min-w-0">
               <div className="text-[13px]">{step.label}</div>
-              <div className="truncate font-mono text-xs text-dim">{step.formula}</div>
+              <div className="truncate text-xs text-dim">{step.formula}</div>
             </div>
             <div className={`tabular shrink-0 text-[13px] ${step.emphasis ? 'text-brand' : 'text-dim'}`}>
               {renderValue(step)}

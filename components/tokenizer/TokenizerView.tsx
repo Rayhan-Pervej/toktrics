@@ -80,8 +80,8 @@ export function TokenizerView() {
         count for every model.
       </p>
 
-      {loading && <p className="font-mono text-xs text-dim">Loading {encodingId} tokenizer…</p>}
-      {error && <p className="font-mono text-xs text-up">{error}</p>}
+      {loading && <p className="text-xs text-dim">Loading {encodingId} tokenizer…</p>}
+      {error && <p className="text-xs text-up">{error}</p>}
 
       {!loading && samples.length > 0 && (
         <>
@@ -140,7 +140,7 @@ export function TokenizerView() {
 
           <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_320px]">
             <Card title={`Token boundaries: ${inspected?.label ?? ''}`} subtitle={`${pieces.length} tokens`}>
-              <div className="flex flex-wrap gap-0.5 font-mono text-xs leading-relaxed">
+              <div className="flex flex-wrap gap-0.5 text-xs leading-relaxed">
                 {pieces.map((p, i) => (
                   <span
                     key={i}
@@ -152,7 +152,7 @@ export function TokenizerView() {
                 ))}
               </div>
               {inspected && inspected.tokenCount > 0 && (
-                <p className="mt-3 font-mono text-[11px] text-faint">
+                <p className="mt-3 text-[11px] text-faint">
                   {inspected.chars} chars · {inspected.charsPerToken.toFixed(2)} chars per token
                 </p>
               )}

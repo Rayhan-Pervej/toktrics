@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Roboto, Roboto_Mono } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 import { Suspense } from 'react'
 
 const roboto = Roboto({
@@ -10,12 +10,6 @@ const roboto = Roboto({
   display: 'swap',
 })
 
-const robotoMono = Roboto_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-roboto-mono',
-  display: 'swap',
-})
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { Brand } from '@/components/ui/Brand'
 import { Footer } from '@/components/ui/Footer'
@@ -64,7 +58,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${roboto.variable} ${robotoMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={roboto.variable}>
       <body className="min-h-screen">
         {/* Applies the stored theme before paint, so there is no flash of the wrong one. */}
         <Script id="theme" strategy="beforeInteractive">
