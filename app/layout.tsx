@@ -19,6 +19,7 @@ import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { Brand } from '@/components/ui/Brand'
 import { Footer } from '@/components/ui/Footer'
 import { TabNav } from '@/components/ui/TabNav'
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from '@/lib/site'
 import './globals.css'
 
@@ -63,6 +64,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${roboto.variable} ${robotoMono.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('toktrics.v1.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="min-h-screen">
         <NuqsAdapter>
           <div className="border-b border-line bg-panel">
@@ -72,9 +80,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <Brand />
                 </div>
               </Suspense>
-              <Suspense fallback={null}>
-                <TabNav />
-              </Suspense>
+              <div className="flex items-center gap-1">
+                <Suspense fallback={null}>
+                  <TabNav />
+                </Suspense>
+                <ThemeToggle />
+              </div>
             </div>
           </div>
           <main className="mx-auto max-w-[1200px] px-5 py-7 sm:px-8">{children}</main>

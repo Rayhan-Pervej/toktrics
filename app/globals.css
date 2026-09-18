@@ -1,20 +1,20 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-canvas: #eae6df;
-  --color-panel: #f6f4f0;
-  --color-raised: #e2ddd4;
-  --color-line: #d2ccc1;
-  --color-line-soft: #ded8ce;
-  --color-ink: #1a1815;
-  --color-dim: #55514a;
-  --color-faint: #666158;
-  --color-brand: #4338ca;
-  --color-brand-soft: #e6e3fb;
-  --color-brand-line: #b8b2ee;
-  --color-up: #a81f16;
-  --color-down: #0a6b45;
-  --color-down-soft: #dff0e7;
+  --color-canvas: #ddd8cf;
+  --color-panel: #e9e5dd;
+  --color-raised: #d3cdc2;
+  --color-line: #c3bcae;
+  --color-line-soft: #d0cabe;
+  --color-ink: #2a2722;
+  --color-dim: #524d44;
+  --color-faint: #575146;
+  --color-brand: #463cc4;
+  --color-brand-soft: #dcd8f5;
+  --color-brand-line: #aaa3e4;
+  --color-up: #a3201a;
+  --color-down: #0b6342;
+  --color-down-soft: #d6e8dd;
 
   --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-roboto-mono), ui-monospace, 'Cascadia Code', monospace;
